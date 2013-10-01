@@ -1,0 +1,4 @@
+resources/secret
+.DS_Store
+php-error.log
+test.php

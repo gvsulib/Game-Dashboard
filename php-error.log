@@ -1537,3 +1537,4 @@
 [25-Sep-2013 14:39:15 America/Detroit] PHP Notice:  Undefined variable: quest_cnt in /Users/jonathanearley/Dropbox/Public/libwebst/game_dashboard/quest_table.php on line 28
 [26-Sep-2013 13:03:51 America/Detroit] PHP Notice:  Undefined variable: quest_cnt in /Users/jonathanearley/Dropbox/Public/libwebst/game_dashboard/quest_table.php on line 28
 [26-Sep-2013 13:09:22 America/Detroit] PHP Notice:  Undefined variable: quest_cnt in /Users/jonathanearley/Dropbox/Public/libwebst/game_dashboard/quest_table.php on line 28
+[27-Sep-2013 18:03:45 America/Detroit] PHP Notice:  Undefined variable: quest_cnt in /Users/jonathanearley/Dropbox/Public/libwebst/game_dashboard/quest_table.php on line 28

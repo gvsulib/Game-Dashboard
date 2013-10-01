@@ -16,7 +16,7 @@
 	date_default_timezone_set('America/Detroit');
 
 	ini_set("log_errors", 1);
-ini_set("error_log", "php-error.log");
+	ini_set("error_log", "php-error.log");
 ?>
 
 <html>
@@ -32,93 +32,93 @@ ini_set("error_log", "php-error.log");
 
 <style>
 
-/* CHART LISTS */
-.chartlist { 
-float: left; 
-border: 1px solid #666; 
-width: 100%;
-height: 1.8em;
-}
-.chartlist li { 
-position: relative;
-display: block;  
-_zoom: 1;
-}
-.chartlist li { 
-display: block; 
-padding: 0.4em 4.5em 0.4em 0.5em;
-position: relative; 
-z-index: 2; 
-}
-.chartlist .count { 
-display: block; 
-position: absolute; 
-top: 0; 
-right: 0; 
-margin: 0 0.3em; 
-text-align: left; 
-color: #333; 
-font-weight: bold; 
-font-size: 0.875em; 
-line-height: 2em; 
-}
-.chartlist .index { 
-display: block; 
-position: absolute; 
-top: 0; 
-left: 0; 
-height: 100%; 
-background: #fb694b; 
-text-indent: -9999px; 
-overflow: hidden; 
-line-height: 2em;
-height: 1.8em;
-}
+	/* CHART LISTS */
+	.chartlist { 
+	float: left; 
+	border: 1px solid #666; 
+	width: 100%;
+	height: 1.8em;
+	}
+	.chartlist li { 
+	position: relative;
+	display: block;  
+	_zoom: 1;
+	}
+	.chartlist li { 
+	display: block; 
+	padding: 0.4em 4.5em 0.4em 0.5em;
+	position: relative; 
+	z-index: 2; 
+	}
+	.chartlist .count { 
+	display: block; 
+	position: absolute; 
+	top: 0; 
+	right: 0; 
+	margin: 0 0.3em; 
+	text-align: left; 
+	color: #333; 
+	font-weight: bold; 
+	font-size: 0.875em; 
+	line-height: 2em; 
+	}
+	.chartlist .index { 
+	display: block; 
+	position: absolute; 
+	top: 0; 
+	left: 0; 
+	height: 100%; 
+	background: #fb694b; 
+	text-indent: -9999px; 
+	overflow: hidden; 
+	line-height: 2em;
+	height: 1.8em;
+	}
 
-label {
-font-size: .8em;
-margin-bottom: .5em;
-color: #333;
-font-weight: bold;
-text-transform: uppercase;
-}
-
-.lib-row-headings th {
-font-size: .8em !important;
-margin-bottom: .5em;
-color: #333;
-font-weight: bold;
-text-transform: uppercase;
-}
-
-.data {
-font-size: 2.5em;
-color: #333;
-text-align: center;
-}
-
-.small {
-font-size: 100%;
-}
-
-.big {
-font-size: 5.5em;
-}
-
-.quest-percent {
-	font-size: 3em;
+	label {
+	font-size: .8em;
+	margin-bottom: .5em;
 	color: #333;
-	padding-right: .2em;
-}
+	font-weight: bold;
+	text-transform: uppercase;
+	}
 
-.quest-title {
-	line-height: 3em;
+	.lib-row-headings th {
+	font-size: .8em !important;
+	margin-bottom: .5em;
 	color: #333;
-}
+	font-weight: bold;
+	text-transform: uppercase;
+	}
 
-body {
-font-family: Arial, Helvetica, sans-serif;
-}
+	.data {
+	font-size: 2.5em;
+	color: #333;
+	text-align: center;
+	}
+
+	.small {
+	font-size: 100%;
+	}
+
+	.big {
+	font-size: 5.5em;
+	}
+
+	.quest-percent {
+		font-size: 3em;
+		color: #333;
+		padding-right: .2em;
+	}
+
+	.quest-title {
+		line-height: 3em;
+		color: #333;
+	}
+
+	body {
+	font-family: Arial, Helvetica, sans-serif;
+	}
 
 /* TIMELINE CHARTS */
     .timeline { 
@@ -176,7 +176,6 @@ font-family: Arial, Helvetica, sans-serif;
     .timeline li a:hover .count { 
       background: #fb694b; 
     }
-
 
 </style>
 
@@ -274,8 +273,9 @@ font-family: Arial, Helvetica, sans-serif;
 	</div> <!-- end line -->
 
 	</div> <!-- end wrapper -->
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
-<script>
+	
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+	<script>
 
 	$(document).ready(function() {
 

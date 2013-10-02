@@ -16,6 +16,8 @@ session_start();
 
 	date_default_timezone_set('America/Detroit');
 
+	error_reporting(0); // turn off error reporting
+
 
 	//$_SESSION['username'] = 'test';
 

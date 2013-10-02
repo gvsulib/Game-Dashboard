@@ -1,6 +1,7 @@
-<!DOCTYPE HTML>
-
 <?php
+session_start();
+	$_SESSION['location'] = 'http://' . $_SERVER['SERVER_NAME'] . "/game-boardboard/index.php";
+
 	include 'resources/secret/config.php';
 	$db = new mysqli($db_host, $db_user, $db_pass, $db_database);
 	if ($db->connect_errno) {
@@ -15,10 +16,17 @@
 
 	date_default_timezone_set('America/Detroit');
 
-	ini_set("log_errors", 1);
-	ini_set("error_log", "php-error.log");
-?>
 
+	//$_SESSION['username'] = 'test';
+
+	if (isset($_SESSION['username']) == false) { // No $_SESSION['username'] variable, send to login script
+
+		header('Location: http://labs.library.gvsu.edu/login');
+
+	} else { // user has logged in
+
+?>
+<!DOCTYPE HTML>
 <html>
 	<head>
 	<title>Library Quest Dashboard</title>
@@ -292,6 +300,12 @@
 	});
 
 </script>
+
+<?php
+
+} // close cas login check
+
+?>
 
 </body>
 </html>

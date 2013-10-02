@@ -278,7 +278,7 @@ session_start();
 
 	<div class="line break footer">
 		<div class="span1 unit break">
-			<p><a href="http://gvsu.edu/library">Grand Valley State University Libraries</a>.</p>
+			<p>Written by <a href="http://jonearley.net/">Jon Earley</a> for <a href="http://gvsu.edu/library">Grand Valley State University Libraries</a>. Code is <a href="https://github.com/gvsulib/game-dashboard">available on Github</a>.</p>
 		</div> <!-- end span -->
 	</div> <!-- end line -->
 

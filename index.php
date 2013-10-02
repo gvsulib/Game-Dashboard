@@ -1,6 +1,6 @@
 <?php
 session_start();
-	$_SESSION['location'] = 'http://' . $_SERVER['SERVER_NAME'] . "/game-board/index.php";
+	$_SESSION['location'] = 'http://' . $_SERVER['SERVER_NAME'] . "/game-dashboard/index.php";
 
 	include 'resources/secret/config.php';
 	$db = new mysqli($db_host, $db_user, $db_pass, $db_database);

@@ -18,7 +18,15 @@
 
 		$player_cnt = 0;
 
+		if (!$admin_user) {
+
+			$result = $db->query("SELECT u.id, u.user_name, ifnull(u.user_name, 'Anonymous'), SUM(q.points), u.created_at FROM users u, quests q, quest_progresses qp WHERE u.id = qp.user_id AND q.id = qp.quest_id AND qp.completed = 1 AND u.id Not in (select id from user_affil) GROUP BY u.id ORDER BY SUM(q.points) DESC");
+		} else {
+
 		$result = $db->query("SELECT u.id, u.user_name, ifnull(u.user_name, 'Anonymous'), SUM(q.points), u.created_at FROM users u, quests q, quest_progresses qp WHERE u.id = qp.user_id AND q.id = qp.quest_id AND qp.completed = 1 GROUP BY u.id ORDER BY SUM(q.points) DESC");
+		}
+
+		
 	    
 	    while($row = $result->fetch_assoc()) {
 
@@ -55,8 +63,20 @@
 				<td>' . $prize_entries . '</td>
 				<td>' . date('m/d/y', strtotime($row['created_at'])) . '</td>';
 
-				if ($session_user == 'felkerk') {
-					echo '<td><a href="#">Hide</a></td>';
+				if ($admin_user) {
+
+					$hide_id = $row['id'];
+
+					$hide_result = $db->query("SELECT user_affil.affil FROM user_affil WHERE user_affil.id = $hide_id");
+					$message = '<td><a href="index.php?userid=' . $row['id'] . '&hide=1#players">Hide</a></td>';
+
+					while($hide_row = $hide_result->fetch_assoc()) {
+						$message = '<td><a href="index.php?userid=' . $row['id'] . '&hide=0#players">Unhide</a></td>';
+					}
+
+					echo $message;
+
+
 				} else {
 					echo '<td></td>';
 				}

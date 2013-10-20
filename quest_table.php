@@ -30,7 +30,7 @@
             echo '
             <tr>
                 <td>' . $quest_cnt . '</td>
-                <td><a href=quest.php?id=' . $row['id'] . '>' . $row['title'] . '</a></td>
+                <td><a href=quest.php?id=' . $row['id'] . '?>' . $row['title'] . '</a></td>
                 <td>' . $row['sum(quest_progresses.accepted)'] . '</td>
                 <td>' . $row['sum(quest_progresses.completed)'] . '</td>
                 <td>' . floor($row['sum(quest_progresses.completed)'] / $row['sum(quest_progresses.accepted)'] * 100) . '%</td>

@@ -27,6 +27,29 @@
 
 		$session_user = $_SESSION['username'];
 
+
+		//$session_user = 'felkerk'; // ONLY FOR TESTING ADMIN RIGHTS
+
+
+		// Checking for admin users. Currently only Kyle Felker.
+		// Admin users can hide players on the user table, 
+		// removing their chance for prizes. 
+		$admin_user = 0;
+		if ($session_user == 'felkerk') {
+			$admin_user = 1;
+
+			$hide_userid = mysql_real_escape_string($_GET['userid']);
+
+			// hide user
+			if ($_GET['hide'] == 1) {	
+				$db->query("INSERT INTO user_affil VALUES ('$hide_userid', '1')");
+			} else {
+				echo 'hide? : ' . $_GET['hide'];
+				$db->query("DELETE FROM user_affil WHERE user_affil.id = $hide_userid");
+			}
+			
+		}
+
 ?>
 <!DOCTYPE HTML>
 <html>
@@ -272,7 +295,7 @@
 			<?php include 'quest_table.php'; ?>
 		</div>
 	
-		<div class="left unit span1" style="padding-top: 1em">
+		<div class="left unit span1" style="padding-top: 1em" id="players">
 			<?php include 'user_table.php'; ?>
 		</div>
 

@@ -1,5 +1,5 @@
 <?php
-session_start();
+	session_start();
 	$_SESSION['location'] = 'http://' . $_SERVER['SERVER_NAME'] . "/game-dashboard/index.php";
 
 	include 'resources/secret/config.php';
@@ -19,13 +19,13 @@ session_start();
 	error_reporting(0); // turn off error reporting
 
 
-	//$_SESSION['username'] = 'test';
-
 	if (isset($_SESSION['username']) == false) { // No $_SESSION['username'] variable, send to login script
 
 		header('Location: http://labs.library.gvsu.edu/login');
 
 	} else { // user has logged in
+
+		$session_user = $_SESSION['username'];
 
 ?>
 <!DOCTYPE HTML>

@@ -212,6 +212,20 @@
 				    </thead>
 				    <tbody>
 
+				    <?php
+						$result = $db->query("SELECT quests.id, quests.title, sum(quest_progresses.accepted), sum(quest_progresses.completed), sum(quest_progresses.completed) / sum(quest_progresses.accepted) * 100
+				            FROM quests, quest_progresses
+				            WHERE quest_progresses.quest_id = '$quest_id'
+				            GROUP BY quests.id
+				            ORDER BY sum(quest_progresses.completed) / sum(quest_progresses.accepted) DESC");
+				        while($row = $result->fetch_assoc()) {
+				            $accepted = $row['sum(quest_progresses.accepted)'];
+				            $completed = $row['sum(quest_progresses.completed)'];
+				            $quest_rate = floor($row['sum(quest_progresses.completed)'] / $row['sum(quest_progresses.accepted)'] * 100);
+				        }
+
+        			?>
+
 					<?php
 						$result = $db->query("SELECT * FROM quests WHERE quests.id = '$quest_id'");
 
@@ -246,8 +260,24 @@
 								<td>' . $row['published'] . '</td>
 							</tr>
 							<tr>
+					    		<td>Created</td>
+								<td>' . $row['created_at'] . '</td>
+							</tr>
+							<tr>
 					    		<td>End Date</td>
 								<td>' . $row['end_date'] . '</td>
+							</tr>
+							<tr>
+					    		<td>Accepted</td>
+								<td>' . $accepted . '</td>
+							</tr>
+														<tr>
+					    		<td>Completed</td>
+								<td>' . $completed . '</td>
+							</tr>
+							<tr>
+					    		<td>Completion Rate</td>
+								<td>' . $quest_rate . '%</td>
 							</tr>
 							';
 
@@ -264,13 +294,12 @@
 			    <table> 
 				    <thead>
 				        <tr>
-				            <th colspan="5">Challenge Completion Rates</th>
+				            <th colspan="5">Challenges</th>
 				        </tr>
 				        <tr class="lib-row-headings">
 				            <th></th>
 				            <th>Challenge</th>
-				            <th>Complete</th>
-				            <th>Total</th>
+				            <th>Completed</th>
 				            <th>Completion Rate</th>
 				        </tr>
 				    </thead>
@@ -278,33 +307,26 @@
 
 					<?php
 
-
-						$result = $db->query("SELECT ch.title, SUM(ch_pr.completed) as completed,
-							COUNT(ch_pr.id) as total,
-						        (( SUM(ch_pr.completed) - COUNT(ch_pr.id) ) / COUNT(ch_pr.id) * 100 + 100) as rate
-								FROM challenge_progresses ch_pr, challenges ch
-								WHERE ch.quest_id = '$quest_id' AND ch.id = ch_pr.challenge_id
-								GROUP BY ch_pr.challenge_id");
-
-						$ChallengeCnt = 1;
+						$result = $db->query("SELECT challenges.title, cp.challenge_id, SUM(cp.completed) FROM challenge_progresses cp, challenges WHERE cp.challenge_id = challenges.id AND challenges.quest_id = '$quest_id' GROUP BY cp.challenge_id");
 
 						while($row = $result->fetch_assoc()) {
 
-							$completed = $row['completed'];
-							$total = $row['total'];
+							$ChallengeCnt++;
 
 							echo '
-					    	<tr>
-					    		<td>' . $ChallengeCnt++ . '</td>
-								<td>' . $row['title'] . '</td>
-								<td>'. $completed .'</td>
-								<td>' . ($total) . '</td>
-								<td>' . floor($row['rate']) . '%</td>
-							</tr>
-							';
+                            <tr>
+                                <td>' . $ChallengeCnt . '</td>
+                                <td>' . $row['title'] . '</td>
+                                <td>' . $row['SUM(cp.completed)'] . '</td>
+                                <td>' . floor($row['SUM(cp.completed)'] / $accepted * 100) . '%</td>
+                            </tr>
+                            ';	
 
 						}
+
 					?>
+
+
 
 					</tbody>
 				</table>

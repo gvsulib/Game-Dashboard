@@ -2,7 +2,7 @@
 	<table>	
 	<thead>
 		<tr>
-			<th colspan="5">Leaderboard</th>
+			<th colspan="6">Leaderboard</th>
 		</tr>
 		<tr class="lib-row-headings">
 			<th></th>
@@ -10,6 +10,7 @@
 			<th>Points</th>
 			<th>Prize Entries</th>
 			<th>Account Created</th>
+			<th></th>
 		</tr>
 	</thead>
 
@@ -28,9 +29,10 @@
 
 	    	$player_cnt++;
 
+
 	    	if ($player_cnt == 8) {
 	    		echo '<tr>
-		    			<td colspan="5" class="show-toggle" style="text-align: center; color: #00549d; text-decoration: underline; cursor: pointer">All Players With Points</td>
+		    			<td colspan="6" class="show-toggle" style="text-align: center; color: #00549d; text-decoration: underline; cursor: pointer">All Players With Points</td>
 					</tr>';
 	    		echo '</tbody>';
 	    		echo '<tbody class="show-wrapper">';
@@ -51,8 +53,15 @@
 
 			echo '
 				<td>' . $prize_entries . '</td>
-				<td>' . date('m/d/y',strtotime($row['created_at'])) . '</td>
-			</tr>';
+				<td>' . date('m/d/y', strtotime($row['created_at'])) . '</td>';
+
+				if ($session_user == 'felkerk') {
+					echo '<td><a href="#">Hide</a></td>';
+				} else {
+					echo '<td></td>';
+				}
+
+			echo '</tr>';
 	    }
 	?>
 

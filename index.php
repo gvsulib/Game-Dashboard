@@ -31,11 +31,10 @@
 		//$session_user = 'felkerk'; // ONLY FOR TESTING ADMIN RIGHTS
 
 
-		// Checking for admin users. Currently only Kyle Felker.
+		// Checking for admin users. 
 		// Admin users can hide players on the user table, 
-		// removing their chance for prizes. 
 		$admin_user = 0;
-		if ($session_user == 'felkerk') {
+		if ($session_user == 'felkerk' OR $session_user == 'earleyj') {
 			$admin_user = 1;
 
 			$hide_userid = mysql_real_escape_string($_GET['userid']);

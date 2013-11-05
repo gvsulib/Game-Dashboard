@@ -14,6 +14,7 @@
 	}
 
 	date_default_timezone_set('America/Detroit');
+	error_reporting(0); // turn off error reporting
 
 	ini_set("log_errors", 1);
 	ini_set("error_log", "php-error.log");

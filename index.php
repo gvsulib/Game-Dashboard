@@ -50,7 +50,7 @@
 				$row_cnt = $result->num_rows;
 				echo '  num_rows: ' . $row_cnt;
 
-				if ($row_cnt > 1) {
+				if ($row_cnt == 0) {
 					echo '  new user';
 					$db->query("INSERT INTO user_affil VALUES ('$hide_userid', '1')");
 				} else {

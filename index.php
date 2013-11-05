@@ -16,7 +16,7 @@
 
 	date_default_timezone_set('America/Detroit');
 
-	//error_reporting(0); // turn off error reporting
+	error_reporting(0); // turn off error reporting
 
 
 	if (isset($_SESSION['username']) == false) { // No $_SESSION['username'] variable, send to login script
@@ -37,7 +37,7 @@
 		if ($session_user == 'felkerk' OR $session_user == 'earleyj' OR $session_user == 'reidsmam') {
 			$admin_user = 1;
 
-			$hide_userid = mysql_real_escape_string($_GET['userid']);
+			$hide_userid = $db->mysql_real_escape_string($_GET['userid']);
 
 			// hide user
 			if ($_GET['hide'] == 1) {	

@@ -16,7 +16,7 @@
 
 	date_default_timezone_set('America/Detroit');
 
-	error_reporting(0); // turn off error reporting
+	//error_reporting(0); // turn off error reporting
 
 
 	if (isset($_SESSION['username']) == false) { // No $_SESSION['username'] variable, send to login script

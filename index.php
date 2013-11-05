@@ -28,7 +28,7 @@
 		$session_user = $_SESSION['username'];
 
 
-		//$session_user = 'felkerk'; // ONLY FOR TESTING ADMIN RIGHTS
+		$session_user = 'felkerk'; // ONLY FOR TESTING ADMIN RIGHTS
 
 
 		// Checking for admin users. 
@@ -37,7 +37,7 @@
 		if ($session_user == 'felkerk' OR $session_user == 'earleyj' OR $session_user == 'reidsmam') {
 			$admin_user = 1;
 
-			$hide_userid = $db->mysql_real_escape_string($_GET['userid']);
+			$hide_userid = $db->real_escape_string($_GET['userid']);
 
 			// hide user
 			if ($_GET['hide'] == 1) {	

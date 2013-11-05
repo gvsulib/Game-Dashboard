@@ -34,7 +34,7 @@
 		// Checking for admin users. 
 		// Admin users can hide players on the user table, 
 		$admin_user = 0;
-		if ($session_user == 'felkerk' OR $session_user == 'earleyj') {
+		if ($session_user == 'felkerk' OR $session_user == 'earleyj' OR $session_user == 'reidsmam') {
 			$admin_user = 1;
 
 			$hide_userid = mysql_real_escape_string($_GET['userid']);

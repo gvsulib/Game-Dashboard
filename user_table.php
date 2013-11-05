@@ -23,7 +23,7 @@
 			$result = $db->query("SELECT u.id, u.user_name, ifnull(u.user_name, 'Anonymous'), SUM(q.points), u.created_at FROM users u, quests q, quest_progresses qp WHERE u.id = qp.user_id AND q.id = qp.quest_id AND qp.completed = 1 AND u.id Not in (select id from user_affil) GROUP BY u.id ORDER BY SUM(q.points) DESC");
 		} else {
 
-		$result = $db->query("SELECT u.id, u.user_name, ifnull(u.user_name, 'Anonymous'), SUM(q.points), u.created_at FROM users u, quests q, quest_progresses qp WHERE u.id = qp.user_id AND q.id = qp.quest_id AND qp.completed = 1 GROUP BY u.id ORDER BY SUM(q.points) DESC");
+			$result = $db->query("SELECT u.id, u.user_name, ifnull(u.user_name, 'Anonymous'), SUM(q.points), u.created_at FROM users u, quests q, quest_progresses qp WHERE u.id = qp.user_id AND q.id = qp.quest_id AND qp.completed = 1 GROUP BY u.id ORDER BY SUM(q.points) DESC");
 		}
 
 		
@@ -67,7 +67,7 @@
 
 					$hide_id = $row['id'];
 
-					$hide_result = $db->query("SELECT user_affil.affil FROM user_affil WHERE user_affil.id = $hide_id AND user_affil.affil = 1");
+					$hide_result = $db->query("SELECT user_affil.affil FROM user_affil WHERE user_affil.id = '$hide_id' AND user_affil.affil = 1");
 					$message = '<td><a href="index.php?userid=' . $row['id'] . '&hide=1#players">Hide</a></td>';
 
 					while($hide_row = $hide_result->fetch_assoc()) {

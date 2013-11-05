@@ -42,20 +42,25 @@
 			// hide user
 			if ($_GET['hide'] == 1) {	
 
-				$result = $db->query("SELECT * FROM user_affil Where user_affil.id = $hide_userid");
+				echo '  hiding users..';
+
+				$result = $db->query("SELECT * FROM user_affil Where user_affil.id = '$hide_userid'");
 
 				$row_cnt = $result->num_rows;
+				echo '  num_rows: ' . $row_cnt
 
 				if ($row_cnt > 1) {
-					//echo 'new user';
+					echo '  new user';
 					$db->query("INSERT INTO user_affil VALUES ('$hide_userid', '1')");
 				} else {
-					//echo 'update users';
-					$db->query("UPDATE user_affil SET user_affil.affil = 1 WHERE user_affil.id = $hide_userid");
+					echo '  update users';
+					$db->query("UPDATE user_affil SET user_affil.affil = 1 WHERE user_affil.id = '$hide_userid'");
 				}
 
 			} else {
-				$db->query("UPDATE user_affil SET affil = 0 WHERE user_affil.id = $hide_userid");
+
+				echo '  show users...'
+				$db->query("UPDATE user_affil SET affil = 0 WHERE user_affil.id = '$hide_userid'");
 			}
 			
 		}

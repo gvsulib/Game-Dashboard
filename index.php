@@ -27,7 +27,7 @@
 
 		$session_user = $_SESSION['username'];
 
-		//$session_user = 'felkerk'; // ONLY FOR TESTING ADMIN RIGHTS
+		$session_user = 'felkerk'; // ONLY FOR TESTING ADMIN RIGHTS
 
 
 		// Checking for admin users. 
@@ -36,31 +36,22 @@
 		if ($session_user == 'felkerk' OR $session_user == 'earleyj' OR $session_user == 'reidsmam') {
 			$admin_user = 1;
 
-			echo ' admin user logged in: ';
-
 			$hide_userid = $db->real_escape_string($_GET['userid']);
 
 			// hide user
 			if ($_GET['hide'] == 1) {	
 
-				echo '  hiding users..';
-
 				$result = $db->query("SELECT * FROM user_affil Where user_affil.id = '$hide_userid'");
 
 				$row_cnt = $result->num_rows;
-				echo '  num_rows: ' . $row_cnt;
 
 				if ($row_cnt == 0) {
-					echo '  new user';
 					$db->query("INSERT INTO user_affil VALUES ('$hide_userid', '1')");
 				} else {
-					echo '  update users';
 					$db->query("UPDATE user_affil SET user_affil.affil = 1 WHERE user_affil.id = '$hide_userid'");
 				}
 
 			} else {
-
-				echo '  show users...';
 				$db->query("UPDATE user_affil SET affil = 0 WHERE user_affil.id = '$hide_userid'");
 			}
 			

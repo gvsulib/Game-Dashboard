@@ -67,7 +67,7 @@
 
 					$hide_id = $row['id'];
 
-					$hide_result = $db->query("SELECT user_affil.affil FROM user_affil WHERE user_affil.id = $hide_id");
+					$hide_result = $db->query("SELECT user_affil.affil FROM user_affil WHERE user_affil.id = $hide_id AND user_affil.affil = 1");
 					$message = '<td><a href="index.php?userid=' . $row['id'] . '&hide=1#players">Hide</a></td>';
 
 					while($hide_row = $hide_result->fetch_assoc()) {

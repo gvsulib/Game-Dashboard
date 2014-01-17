@@ -2,10 +2,15 @@
 	<table>	
 	<thead>
 		<tr>
-			<th colspan="6">Leaderboard</th>
+			<th colspan="7">Leaderboard</th>
 		</tr>
 		<tr class="lib-row-headings">
 			<th></th>
+			<?php
+			if ($admin_user) {
+				echo '<th>ID</th>';
+			}
+			?>
 			<th>Player</th>
 			<th>Points</th>
 			<th>Prize Entries</th>
@@ -40,7 +45,7 @@
 
 	    	if ($player_cnt == 8) {
 	    		echo '<tr>
-		    			<td colspan="6" class="show-toggle" style="text-align: center; color: #00549d; text-decoration: underline; cursor: pointer">All Players With Points</td>
+		    			<td colspan="7" class="show-toggle" style="text-align: center; color: #00549d; text-decoration: underline; cursor: pointer">All Players With Points</td>
 					</tr>';
 	    		echo '</tbody>';
 	    		echo '<tbody class="show-wrapper">';
@@ -48,7 +53,11 @@
 
 			echo '
 	    	<tr>
-	    		<td>' . $player_cnt . '</td>
+	    		<td>' . $player_cnt . '</td>';
+	    		if ($admin_user) {
+	    		echo ' <td>' . $row['id'] . '</td>';
+	    		}
+	    		echo '
 				<td>' . $user_name . '</td>
 				<td>' . $row['SUM(q.points)'] . '</td>';
 
